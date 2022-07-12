@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <link href="estilos.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Casa Domótica</title>
+    </head>
+
+    <body>
+        
+        <div class ="gridPrincipal">    
+            
+            
+            <div id="estados" class ="estados">
+                <p> Persiana: <span id ="estadoPersiana"></span></p>
+                <p> Aire Acondicionado: <span id ="estadoAC"></span></p>
+                <p> Luz: <span id = "estadoLuz"></span></p>
+                <p> Gente: <span id = "estadoPuerta"></span></p>
+            </div>
+
+            <div class="botoneria">
+
+                <div class="sensores">
+                    <title>Sensores</title>
+                    <form action="javascript:void(0);" onsubmit="javascript:enviar_sensores();">
+                        Temperatura: <input type="label" id="temperatura" /><br />
+                        Luminosidad: <input type="label" id="luminosidad" /><br />
+                        Gente dentro: <input type="checkbox" id="puerta"  /><br />
+                        <input type="submit" value="Enviar datos de los sensores" />
+                    </form>
+                    <span id="result"></span>
+                </div>
+
+                <div class="botones">
+                    <title>Manual</title>
+                    <button id = "cambiar_estado_persiana"> Abrir/Cerrar persiana </button>
+                    <button id = "cambiar_estado_ac"> Encender/Apagar AC</button>
+                    <button id = "cambiar_estado_luz"> Encender/Apagar luz</button>
+                    <button id = "cambiar_estado_puerta">Salir/Entrar a casa</button>
+                </div>
+
+            </div>
+
+
+            <div class="informacion">
+
+                <div id="resultados" class="historico">
+                    <details>
+                        <summary>Histórico de eventos de sensores</summary>
+                        <ul id="listaEventos" class="lista"></ul>
+                    </details>
+                </div>
+
+                <div class="advertencias">
+                    <p id="advertencia_luz" style="color: red"></p>
+                    <p id="advertencia_temp" style="color: red"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="cliente.js"></script>
+    <script src="agente.js"></script>
+
+
+</html>
